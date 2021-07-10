@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Головна сторінка</title>
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/font-awesome.css" rel="stylesheet" />
+    <link href="/images/mainIcon.png" rel="shortcut icon" />
+    <link href="/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container">
+            <a href="" class="navbar-brand">Список користувачів</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#mainMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse collapse" id="mainMenu">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item active"><a href="/" class="nav-link"><i class="fa fa-home fa-spin"></i>&nbsp;Головна сторінка</a></li>
+                    <li class="nav-item"><a href="/" class="nav-link"><i class="fa fa-users fa-spin"></i>&nbsp;Список користувачів</a></li>
+                    <li class="nav-item"><a href="/" class="nav-link"><i class="fa fa-sellsy fa-spin"></i>&nbsp;Подати заявку</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Номер</th>
+                            <th scope="col">Зображення</th>
+                            <th scope="col">Ім'я</th>
+                            <th scope="col">Прізвище</th>
+                            <th scope="col">Номер телефону</th>
+                            <th scope="col">E-mail адреса</th>
+                            <th scope="col">Інструменти</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userBody">
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="7" class="text-center">
+                                <button class="btn btn-success"
+                                        id="addNewUser"
+                                        data-toggle="modal"
+                                        data-target="#mainModal">
+                                    Додати нового користувача
+                                </button>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="mainModal" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="text-dark" id="modalHeader">Додати нового користувача</h4>
+                    <span class="close" id="closeModal" data-dismiss="modal">&times;</span>
+                    <span></span>
+                </div>
+                <div class="modal-body">
+                    <form id="mainForm">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12">
+                                <img src="/images/no-image.png" class="w-100 border" id="imgModal" height="300" alt="no-image" />
+                            </div>
+                            <div class="col-lg-8 col-md-12">
+                                <div class="form-group">
+                                    <h4 class="text-dark">Ім'я користувача</h4>
+                                    <input type="text" placeholder="Ім'я користувача" class="form-control" id="txtName" />
+                                    <small><label class="text-muted form-text" for="txtName">Ведіть коректне ім'я</label></small>
+                                </div>
+                                <div class="form-group">
+                                    <h4 class="text-dark">Прізвище користувача</h4>
+                                    <input type="text" placeholder="Прізвище користувача" class="form-control" id="txtLastname" />
+                                    <small><label class="text-muted form-text" for="txtLastname">Ведіть коректне прізвище</label></small>
+                                </div>
+                                <div class="form-group">
+                                    <h4 class="text-dark">Телефон користувача</h4>
+                                    <input type="text" placeholder="Телефон користувача" class="form-control" id="txtPhone" />
+                                    <small><label class="text-muted form-text" for="txtPhone">Ведіть коректний телефон</label></small>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <h4 class="text-dark">E-mail користувача</h4>
+                            <input type="text" placeholder="E-mail користувача" class="form-control" id="txtMail" />
+                            <small><label class="text-muted form-text" for="txtMail">Ведіть коректний E-mail</label></small>
+                        </div>
+
+                        <div class="form-group" id="draganddrop">
+                            <h4 class="text-dark text-center">Фотографія користувача</h4>
+                            <input type="hidden" id="inputImgHidden" />
+                            <div class="custom-file d-none">
+                                <input type="file" class="custom-file-input" id="txtPhoto" />
+                                <label for="txtPhoto" class="custom-file-label">Оберіть фотографію</label>
+                            </div>
+                            <small>
+                                <label class="text-muted form-text text-center" for="txtPhoto">
+                                    <img id="txtPhotoBlock" src="/images/gallery.png" width="150" height="150" />
+                                    <label class="d-block">Оберіть фотографію</label>
+                                    <div class="invalid-feedback">
+                                        Фотографію не обрано!
+                                    </div>
+                                    <div class="valid-feedback">
+                                        Файл обрано!
+                                    </div>
+                                </label>
+                            </small>
+                        </div>
+
+                        <!--<div class="form-group d-block border">
+                            <div class="mx-auto">
+                                <input type="file" class="d-none" id="fileSelection"/>
+                                <label for="fileSelection"  class="mx-auto">
+                                    <img class="border" src="/images/no-image.png" width="150" height="150" />
+                                </label>
+                            </div>
+                        </div>-->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" id="btnSaveChanges">Зберегти зміни</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/jquery-3.5.1.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/popper.js"></script>
+    <script src="/js/bootbox.all.min.js"></script>
+    <script src="/js/imask.js"></script>
+    <script src="/js/users.js"></script>
+</body>
+</html>
